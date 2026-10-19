@@ -56,6 +56,16 @@ class Server extends Model
         return $this->hasMany(ServerCapability::class);
     }
 
+    public function firewallRules(): HasMany
+    {
+        return $this->hasMany(\App\Modules\Firewall\Models\FirewallRule::class);
+    }
+
+    public function bannedIps(): HasMany
+    {
+        return $this->hasMany(\App\Modules\Firewall\Models\BannedIp::class);
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;

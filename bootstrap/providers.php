@@ -22,4 +22,5 @@ return [
     \App\Modules\Ftp\Providers\FtpServiceProvider::class,
     \App\Modules\Cron\Providers\CronServiceProvider::class,
     \App\Modules\Backups\Providers\BackupServiceProvider::class,
+    \App\Modules\Firewall\Providers\FirewallServiceProvider::class,
 ];
