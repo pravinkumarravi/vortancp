@@ -21,4 +21,5 @@ return [
     \App\Modules\PhpManager\Providers\PhpManagerServiceProvider::class,
     \App\Modules\Ftp\Providers\FtpServiceProvider::class,
     \App\Modules\Cron\Providers\CronServiceProvider::class,
+    \App\Modules\Backups\Providers\BackupServiceProvider::class,
 ];

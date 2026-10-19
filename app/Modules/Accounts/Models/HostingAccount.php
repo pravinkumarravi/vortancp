@@ -72,6 +72,16 @@ class HostingAccount extends Model
         return $this->hasMany(\App\Modules\Cron\Models\CronJob::class);
     }
 
+    public function backups(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Modules\Backups\Models\Backup::class);
+    }
+
+    public function backupSchedules(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Modules\Backups\Models\BackupSchedule::class);
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
