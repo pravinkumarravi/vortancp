@@ -75,6 +75,11 @@ class Domain extends Model
         return $this->hasMany(\App\Modules\Git\Models\GitRepository::class);
     }
 
+    public function installedApps(): HasMany
+    {
+        return $this->hasMany(\App\Modules\AppInstaller\Models\InstalledApp::class);
+    }
+
     public function isPrimary(): bool
     {
         return $this->type === self::TYPE_PRIMARY;

@@ -26,4 +26,5 @@ return [
     \App\Modules\SecurityCenter\Providers\SecurityCenterServiceProvider::class,
     \App\Modules\WordPressToolkit\Providers\WordPressToolkitServiceProvider::class,
     \App\Modules\Git\Providers\GitServiceProvider::class,
+    \App\Modules\AppInstaller\Providers\AppInstallerServiceProvider::class,
 ];

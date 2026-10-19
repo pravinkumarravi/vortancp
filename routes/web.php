@@ -69,6 +69,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/security', \App\Modules\SecurityCenter\Livewire\SecurityCenterIndex::class)->name('security.index');
             Route::get('/wordpress', \App\Modules\WordPressToolkit\Livewire\WordPressIndex::class)->name('wordpress.index');
             Route::get('/git', \App\Modules\Git\Livewire\GitIndex::class)->name('git.index');
+            Route::get('/apps', \App\Modules\AppInstaller\Livewire\AppInstallerIndex::class)->name('apps.index');
 
             // Placeholder routes for navigation links
             Route::get('/users', function () {
@@ -110,6 +111,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/backups', \App\Modules\Backups\Livewire\BackupIndex::class)->name('backups.index');
             Route::get('/wordpress', \App\Modules\WordPressToolkit\Livewire\WordPressIndex::class)->name('wordpress.index');
             Route::get('/git', \App\Modules\Git\Livewire\GitIndex::class)->name('git.index');
+            Route::get('/apps', \App\Modules\AppInstaller\Livewire\AppInstallerIndex::class)->name('apps.index');
         });
 
     // User Profile & Settings

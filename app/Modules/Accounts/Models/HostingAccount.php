@@ -92,6 +92,11 @@ class HostingAccount extends Model
         return $this->hasMany(\App\Modules\Git\Models\GitRepository::class);
     }
 
+    public function installedApps(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Modules\AppInstaller\Models\InstalledApp::class);
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
