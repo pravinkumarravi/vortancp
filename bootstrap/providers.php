@@ -18,4 +18,5 @@ return [
     \App\Modules\FileManager\Providers\FileManagerServiceProvider::class,
     \App\Modules\Databases\Providers\DatabasesServiceProvider::class,
     \App\Modules\Email\Providers\EmailServiceProvider::class,
+    \App\Modules\PhpManager\Providers\PhpManagerServiceProvider::class,
 ];
