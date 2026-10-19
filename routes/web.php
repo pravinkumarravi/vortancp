@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/firewall', \App\Modules\Firewall\Livewire\FirewallIndex::class)->name('firewall.index');
             Route::get('/security', \App\Modules\SecurityCenter\Livewire\SecurityCenterIndex::class)->name('security.index');
             Route::get('/wordpress', \App\Modules\WordPressToolkit\Livewire\WordPressIndex::class)->name('wordpress.index');
+            Route::get('/git', \App\Modules\Git\Livewire\GitIndex::class)->name('git.index');
 
             // Placeholder routes for navigation links
             Route::get('/users', function () {
@@ -108,6 +109,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/cron', \App\Modules\Cron\Livewire\CronIndex::class)->name('cron.index');
             Route::get('/backups', \App\Modules\Backups\Livewire\BackupIndex::class)->name('backups.index');
             Route::get('/wordpress', \App\Modules\WordPressToolkit\Livewire\WordPressIndex::class)->name('wordpress.index');
+            Route::get('/git', \App\Modules\Git\Livewire\GitIndex::class)->name('git.index');
         });
 
     // User Profile & Settings
@@ -115,3 +117,14 @@ Route::middleware('auth')->group(function () {
         return redirect()->route('dashboard');
     })->name('profile.show');
 });
+
+// Git Webhook endpoint (Public with token verification)
+Route::post('/api/git/webhook/{repo}', function (
+    \App\Modules\Git\Models\GitRepository $repo,
+    \Illuminate\Http\Request $request,
+    \App\Modules\Git\Services\GitRepositoryService $gitService
+) {
+    $token = $request->header('X-Webhook-Token') ?? $request->query('token');
+    $result = $gitService->handleWebhook($repo, $request->all(), $token);
+    return response()->json($result);
+})->name('git.webhook');

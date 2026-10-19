@@ -70,6 +70,11 @@ class Domain extends Model
         return $this->hasMany(\App\Modules\WordPressToolkit\Models\WordPressInstance::class);
     }
 
+    public function gitRepositories(): HasMany
+    {
+        return $this->hasMany(\App\Modules\Git\Models\GitRepository::class);
+    }
+
     public function isPrimary(): bool
     {
         return $this->type === self::TYPE_PRIMARY;

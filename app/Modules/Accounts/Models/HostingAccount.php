@@ -87,6 +87,11 @@ class HostingAccount extends Model
         return $this->hasMany(\App\Modules\WordPressToolkit\Models\WordPressInstance::class);
     }
 
+    public function gitRepositories(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Modules\Git\Models\GitRepository::class);
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
