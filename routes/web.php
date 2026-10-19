@@ -53,6 +53,10 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::get('/', AdminDashboard::class)->name('dashboard');
             
+            Route::get('/servers', \App\Modules\Servers\Livewire\ServerIndex::class)->name('servers.index');
+            Route::get('/accounts', \App\Modules\Accounts\Livewire\AccountIndex::class)->name('accounts.index');
+            Route::get('/domains', \App\Modules\Domains\Livewire\DomainIndex::class)->name('domains.index');
+
             // Placeholder routes for navigation links
             Route::get('/users', function () {
                 return redirect()->route('admin.dashboard');
@@ -81,6 +85,7 @@ Route::middleware('auth')->group(function () {
         ->middleware('role:customer')
         ->group(function () {
             Route::get('/', CustomerDashboard::class)->name('dashboard');
+            Route::get('/domains', \App\Modules\Domains\Livewire\DomainIndex::class)->name('domains.index');
         });
 
     // User Profile & Settings
