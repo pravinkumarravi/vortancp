@@ -60,6 +60,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/ssl', \App\Modules\Ssl\Livewire\SslCertificateManager::class)->name('ssl.index');
             Route::get('/files', \App\Modules\FileManager\Livewire\FileManagerIndex::class)->name('files.index');
             Route::get('/databases', \App\Modules\Databases\Livewire\DatabaseIndex::class)->name('databases.index');
+            Route::get('/email', \App\Modules\Email\Livewire\MailboxManager::class)->name('email.index');
 
             // Placeholder routes for navigation links
             Route::get('/users', function () {
@@ -94,6 +95,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/ssl', \App\Modules\Ssl\Livewire\SslCertificateManager::class)->name('ssl.index');
             Route::get('/files', \App\Modules\FileManager\Livewire\FileManagerIndex::class)->name('files.index');
             Route::get('/databases', \App\Modules\Databases\Livewire\DatabaseIndex::class)->name('databases.index');
+            Route::get('/email', \App\Modules\Email\Livewire\MailboxManager::class)->name('email.index');
         });
 
     // User Profile & Settings
