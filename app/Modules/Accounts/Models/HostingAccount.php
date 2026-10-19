@@ -62,6 +62,11 @@ class HostingAccount extends Model
         return $this->hasMany(\App\Modules\Domains\Models\Domain::class);
     }
 
+    public function ftpAccounts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Modules\Ftp\Models\FtpAccount::class);
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;

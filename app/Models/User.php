@@ -30,4 +30,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function customer(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(\App\Modules\Accounts\Models\Customer::class);
+    }
+
+    public function isCustomer(): bool
+    {
+        return $this->hasRole('customer');
+    }
 }
