@@ -27,4 +27,5 @@ return [
     \App\Modules\WordPressToolkit\Providers\WordPressToolkitServiceProvider::class,
     \App\Modules\Git\Providers\GitServiceProvider::class,
     \App\Modules\AppInstaller\Providers\AppInstallerServiceProvider::class,
+    \App\Modules\Metrics\Providers\MetricsServiceProvider::class,
 ];
