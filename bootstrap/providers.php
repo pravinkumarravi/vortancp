@@ -16,4 +16,5 @@ return [
     \App\Modules\Dns\Providers\DnsServiceProvider::class,
     \App\Modules\Ssl\Providers\SslServiceProvider::class,
     \App\Modules\FileManager\Providers\FileManagerServiceProvider::class,
+    \App\Modules\Databases\Providers\DatabasesServiceProvider::class,
 ];
