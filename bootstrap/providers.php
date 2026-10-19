@@ -24,4 +24,5 @@ return [
     \App\Modules\Backups\Providers\BackupServiceProvider::class,
     \App\Modules\Firewall\Providers\FirewallServiceProvider::class,
     \App\Modules\SecurityCenter\Providers\SecurityCenterServiceProvider::class,
+    \App\Modules\WordPressToolkit\Providers\WordPressToolkitServiceProvider::class,
 ];

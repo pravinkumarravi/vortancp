@@ -82,6 +82,11 @@ class HostingAccount extends Model
         return $this->hasMany(\App\Modules\Backups\Models\BackupSchedule::class);
     }
 
+    public function wordPressInstances(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Modules\WordPressToolkit\Models\WordPressInstance::class);
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;

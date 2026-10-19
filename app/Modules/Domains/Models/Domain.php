@@ -65,6 +65,11 @@ class Domain extends Model
         return $this->hasOne(VirtualHost::class);
     }
 
+    public function wordPressInstances(): HasMany
+    {
+        return $this->hasMany(\App\Modules\WordPressToolkit\Models\WordPressInstance::class);
+    }
+
     public function isPrimary(): bool
     {
         return $this->type === self::TYPE_PRIMARY;
