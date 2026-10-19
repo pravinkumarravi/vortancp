@@ -23,4 +23,5 @@ return [
     \App\Modules\Cron\Providers\CronServiceProvider::class,
     \App\Modules\Backups\Providers\BackupServiceProvider::class,
     \App\Modules\Firewall\Providers\FirewallServiceProvider::class,
+    \App\Modules\SecurityCenter\Providers\SecurityCenterServiceProvider::class,
 ];

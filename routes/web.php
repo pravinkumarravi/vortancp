@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/cron', \App\Modules\Cron\Livewire\CronIndex::class)->name('cron.index');
             Route::get('/backups', \App\Modules\Backups\Livewire\BackupIndex::class)->name('backups.index');
             Route::get('/firewall', \App\Modules\Firewall\Livewire\FirewallIndex::class)->name('firewall.index');
+            Route::get('/security', \App\Modules\SecurityCenter\Livewire\SecurityCenterIndex::class)->name('security.index');
 
             // Placeholder routes for navigation links
             Route::get('/users', function () {
