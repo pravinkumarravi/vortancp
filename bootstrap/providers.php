@@ -13,4 +13,5 @@ return [
     \App\Modules\Resellers\Providers\ResellersServiceProvider::class,
     \App\Modules\HostingPlans\Providers\HostingPlansServiceProvider::class,
     \App\Modules\Domains\Providers\DomainsServiceProvider::class,
+    \App\Modules\Dns\Providers\DnsServiceProvider::class,
 ];

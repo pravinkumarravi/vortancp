@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/servers', \App\Modules\Servers\Livewire\ServerIndex::class)->name('servers.index');
             Route::get('/accounts', \App\Modules\Accounts\Livewire\AccountIndex::class)->name('accounts.index');
             Route::get('/domains', \App\Modules\Domains\Livewire\DomainIndex::class)->name('domains.index');
+            Route::get('/dns', \App\Modules\Dns\Livewire\DnsZoneEditor::class)->name('dns.index');
 
             // Placeholder routes for navigation links
             Route::get('/users', function () {
@@ -86,6 +87,7 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::get('/', CustomerDashboard::class)->name('dashboard');
             Route::get('/domains', \App\Modules\Domains\Livewire\DomainIndex::class)->name('domains.index');
+            Route::get('/dns', \App\Modules\Dns\Livewire\DnsZoneEditor::class)->name('dns.index');
         });
 
     // User Profile & Settings
