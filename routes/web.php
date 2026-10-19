@@ -63,6 +63,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/email', \App\Modules\Email\Livewire\MailboxManager::class)->name('email.index');
             Route::get('/php', \App\Modules\PhpManager\Livewire\PhpManagerIndex::class)->name('php.index');
             Route::get('/ftp', \App\Modules\Ftp\Livewire\FtpIndex::class)->name('ftp.index');
+            Route::get('/cron', \App\Modules\Cron\Livewire\CronIndex::class)->name('cron.index');
 
             // Placeholder routes for navigation links
             Route::get('/users', function () {
@@ -100,6 +101,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/email', \App\Modules\Email\Livewire\MailboxManager::class)->name('email.index');
             Route::get('/php', \App\Modules\PhpManager\Livewire\PhpManagerIndex::class)->name('php.index');
             Route::get('/ftp', \App\Modules\Ftp\Livewire\FtpIndex::class)->name('ftp.index');
+            Route::get('/cron', \App\Modules\Cron\Livewire\CronIndex::class)->name('cron.index');
         });
 
     // User Profile & Settings

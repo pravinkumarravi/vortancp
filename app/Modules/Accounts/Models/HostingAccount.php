@@ -67,6 +67,11 @@ class HostingAccount extends Model
         return $this->hasMany(\App\Modules\Ftp\Models\FtpAccount::class);
     }
 
+    public function cronJobs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Modules\Cron\Models\CronJob::class);
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;

@@ -20,4 +20,5 @@ return [
     \App\Modules\Email\Providers\EmailServiceProvider::class,
     \App\Modules\PhpManager\Providers\PhpManagerServiceProvider::class,
     \App\Modules\Ftp\Providers\FtpServiceProvider::class,
+    \App\Modules\Cron\Providers\CronServiceProvider::class,
 ];
