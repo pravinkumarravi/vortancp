@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/domains', \App\Modules\Domains\Livewire\DomainIndex::class)->name('domains.index');
             Route::get('/dns', \App\Modules\Dns\Livewire\DnsZoneEditor::class)->name('dns.index');
             Route::get('/ssl', \App\Modules\Ssl\Livewire\SslCertificateManager::class)->name('ssl.index');
+            Route::get('/files', \App\Modules\FileManager\Livewire\FileManagerIndex::class)->name('files.index');
 
             // Placeholder routes for navigation links
             Route::get('/users', function () {
@@ -90,6 +91,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/domains', \App\Modules\Domains\Livewire\DomainIndex::class)->name('domains.index');
             Route::get('/dns', \App\Modules\Dns\Livewire\DnsZoneEditor::class)->name('dns.index');
             Route::get('/ssl', \App\Modules\Ssl\Livewire\SslCertificateManager::class)->name('ssl.index');
+            Route::get('/files', \App\Modules\FileManager\Livewire\FileManagerIndex::class)->name('files.index');
         });
 
     // User Profile & Settings
