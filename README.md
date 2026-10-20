@@ -17,7 +17,7 @@
 - **Root-Isolated Daemon (`vortan-agent`)**:
   - The web application executes as unprivileged user `vortan`.
   - Privileged Linux host operations (Nginx, PHP-FPM, BIND9, Postfix, UFW, system users, quotas) are orchestrated strictly via **allowlisted JSON-RPC 2.0 over Unix Domain Socket / mTLS** with cryptographic HMAC-SHA256 authentication.
-- **100% Green Test Suite**: 182 passing tests with 691 assertions covering unit compiler logic and end-to-end Livewire interactivity.
+- **100% Green Test Suite**: 191 passing tests with 715 assertions covering unit compiler logic and end-to-end Livewire interactivity.
 
 ---
 
@@ -52,6 +52,7 @@
 | **Billing & WHMCS** | RESTful external billing API integration for WHMCS, Blesta, and HostBill with API key management. |
 | **Service Manager** | Core systemd daemon monitoring, 1-click service control (restart/reload/stop), and crash recovery watchdog. |
 | **Log Inspector** | Real-time server log inspection (Nginx, PHP-FPM, MariaDB, Mail, Agent, Fail2ban) & customer domain logs. |
+| **Web Terminal** | In-browser interactive shell console with jailed customer homedir chroot, privilege barriers, destructive command blocking, and security audit trail. |
 
 ---
 
@@ -116,7 +117,7 @@ Access the application at `http://127.0.0.1:8000`.
 The test suite validates both Unit compilation logic and Livewire Feature interactivity:
 
 ```bash
-# Run all 182 tests (691 assertions)
+# Run all 191 tests (715 assertions)
 php artisan test
 
 # Run a specific domain module's tests

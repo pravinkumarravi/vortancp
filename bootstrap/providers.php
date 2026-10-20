@@ -32,4 +32,5 @@ return [
     \App\Modules\Billing\Providers\BillingServiceProvider::class,
     \App\Modules\ServiceManager\Providers\ServiceManagerServiceProvider::class,
     \App\Modules\Logs\Providers\LogsServiceProvider::class,
+    \App\Modules\Terminal\Providers\TerminalServiceProvider::class,
 ];
