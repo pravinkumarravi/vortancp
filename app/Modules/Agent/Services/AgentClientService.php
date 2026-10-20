@@ -60,6 +60,22 @@ class AgentClientService
     }
 
     /**
+     * Helper to start system services.
+     */
+    public function startService(string $service, ?Server $server = null): array
+    {
+        return $this->call('system.service_action', ['service' => $service, 'action' => 'start'], $server);
+    }
+
+    /**
+     * Helper to stop system services.
+     */
+    public function stopService(string $service, ?Server $server = null): array
+    {
+        return $this->call('system.service_action', ['service' => $service, 'action' => 'stop'], $server);
+    }
+
+    /**
      * Helper to test Nginx configuration.
      */
     public function testNginx(?Server $server = null): array

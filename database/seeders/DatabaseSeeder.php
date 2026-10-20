@@ -303,5 +303,8 @@ class DatabaseSeeder extends Seeder
                 'is_active' => true,
             ]
         );
+
+        // 15. Monitored System Daemons
+        \App\Modules\ServiceManager\Models\MonitoredService::seedDefaults();
     }
 }
