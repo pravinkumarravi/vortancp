@@ -28,4 +28,5 @@ return [
     \App\Modules\Git\Providers\GitServiceProvider::class,
     \App\Modules\AppInstaller\Providers\AppInstallerServiceProvider::class,
     \App\Modules\Metrics\Providers\MetricsServiceProvider::class,
+    \App\Modules\Agent\Providers\AgentServiceProvider::class,
 ];
