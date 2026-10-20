@@ -51,6 +51,7 @@
 | **Agent** | Privileged host orchestration daemon, allowlisted JSON-RPC 2.0 protocol, HMAC verification. |
 | **Billing & WHMCS** | RESTful external billing API integration for WHMCS, Blesta, and HostBill with API key management. |
 | **Service Manager** | Core systemd daemon monitoring, 1-click service control (restart/reload/stop), and crash recovery watchdog. |
+| **Log Inspector** | Real-time server log inspection (Nginx, PHP-FPM, MariaDB, Mail, Agent, Fail2ban) & customer domain logs. |
 
 ---
 
@@ -115,10 +116,11 @@ Access the application at `http://127.0.0.1:8000`.
 The test suite validates both Unit compilation logic and Livewire Feature interactivity:
 
 ```bash
-# Run all 168 tests (652 assertions)
+# Run all 175 tests (671 assertions)
 php artisan test
 
 # Run a specific domain module's tests
+php artisan test --filter=LogViewer
 php artisan test --filter=ServiceManager
 php artisan test --filter=BillingApi
 php artisan test --filter=Agent

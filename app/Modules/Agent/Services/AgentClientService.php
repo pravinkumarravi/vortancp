@@ -115,6 +115,19 @@ class AgentClientService
     }
 
     /**
+     * Helper to read trailing lines of a system or virtual host log.
+     */
+    public function readLog(string $source, int $lines = 100, array $extra = [], ?Server $server = null): array
+    {
+        $params = array_merge([
+            'source' => $source,
+            'lines' => $lines,
+        ], $extra);
+
+        return $this->call('system.read_log', $params, $server);
+    }
+
+    /**
      * Determine whether to use direct in-process dispatcher (e.g. testing, Windows dev, or driver configured as direct).
      */
     protected function shouldUseDirectDispatch(?Server $server = null): bool

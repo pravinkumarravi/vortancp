@@ -31,4 +31,5 @@ return [
     \App\Modules\Agent\Providers\AgentServiceProvider::class,
     \App\Modules\Billing\Providers\BillingServiceProvider::class,
     \App\Modules\ServiceManager\Providers\ServiceManagerServiceProvider::class,
+    \App\Modules\Logs\Providers\LogsServiceProvider::class,
 ];

@@ -56,6 +56,7 @@ class AgentDispatcherService
             'user.delete' => $this->handleUserDelete($params),
             'quota.check' => $this->handleQuotaCheck($params),
             'file.set_permissions' => $this->handleSetPermissions($params),
+            'system.read_log' => $this->handleReadLog($params),
             default => throw new InvalidArgumentException("Method [{$method}] is not recognized or not allowlisted by vortan-agent.", AgentProtocolService::CODE_METHOD_NOT_FOUND),
         };
     }
@@ -208,6 +209,48 @@ class AgentDispatcherService
             'stdout' => trim($chownRes['stdout'] . "\n" . $chmodRes['stdout']),
             'stderr' => trim($chownRes['stderr'] . "\n" . $chmodRes['stderr']),
         ];
+    }
+
+    /**
+     * Read trailing lines of an allowlisted system or virtual host log file.
+     */
+    protected function handleReadLog(array $params): array
+    {
+        $source = trim((string) ($params['source'] ?? ''));
+        $lines = min(max((int) ($params['lines'] ?? 100), 10), 1000);
+
+        $systemLogs = [
+            'nginx-error' => '/var/log/nginx/error.log',
+            'nginx-access' => '/var/log/nginx/access.log',
+            'php-fpm' => '/var/log/php8.3-fpm.log',
+            'mariadb' => '/var/log/mysql/error.log',
+            'mail' => '/var/log/mail.log',
+            'vortan-agent' => '/var/log/vortan/agent.log',
+            'fail2ban' => '/var/log/fail2ban.log',
+        ];
+
+        if (isset($systemLogs[$source])) {
+            $filePath = $systemLogs[$source];
+        } elseif ($source === 'vhost') {
+            $username = trim((string) ($params['username'] ?? ''));
+            $domain = trim((string) ($params['domain'] ?? ''));
+            $type = strtolower(trim((string) ($params['type'] ?? 'access')));
+
+            if (! preg_match('/^[a-z0-9_\-]+$/i', $username) || ! preg_match('/^[a-z0-9.\-]+$/i', $domain)) {
+                throw new InvalidArgumentException("Invalid username or domain parameter for log inspection.", AgentProtocolService::CODE_INVALID_PARAMS);
+            }
+
+            if (! in_array($type, ['access', 'error'], true)) {
+                throw new InvalidArgumentException("Invalid log type. Allowed: access, error.", AgentProtocolService::CODE_INVALID_PARAMS);
+            }
+
+            $filePath = "/var/vortan/logs/{$username}/{$domain}.{$type}.log";
+        } else {
+            throw new InvalidArgumentException("Unrecognized or unauthorized log source [{$source}].", AgentProtocolService::CODE_INVALID_PARAMS);
+        }
+
+        $command = "tail -n {$lines} " . escapeshellarg($filePath);
+        return $this->executeCommand($command);
     }
 
     /**
