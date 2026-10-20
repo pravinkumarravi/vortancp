@@ -8,30 +8,30 @@
     $text = $label ?? ucfirst($normalized);
 
     $styles = match($normalized) {
-        'active', 'enabled', 'running', 'success' => [
-            'class' => 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/60',
-            'dot' => 'bg-emerald-500 animate-pulse',
+        'active', 'enabled', 'running', 'success', 'issued', 'ok', 'online' => [
+            'class' => 'bg-[#E1F9EE] text-[#0A9952] dark:bg-[#0A9952]/15 dark:text-[#3CD856] border-[#0A9952]/20',
+            'dot' => 'bg-[#0A9952]',
         ],
-        'pending', 'queued', 'warning' => [
-            'class' => 'bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 border-amber-200 dark:border-amber-800/60',
-            'dot' => 'bg-amber-500 animate-spin',
+        'pending', 'queued', 'warning', 'in_progress', 'syncing' => [
+            'class' => 'bg-[#FEF8EC] text-[#D38B0B] dark:bg-[#D38B0B]/15 dark:text-[#FFBA00] border-[#D38B0B]/20',
+            'dot' => 'bg-[#D38B0B]',
         ],
-        'failed', 'error', 'danger' => [
-            'class' => 'bg-rose-50 text-rose-700 dark:bg-rose-950/50 dark:text-rose-400 border-rose-200 dark:border-rose-800/60',
-            'dot' => 'bg-rose-500',
+        'failed', 'error', 'danger', 'blocked', 'banned', 'offline', 'critical' => [
+            'class' => 'bg-[#FEECEC] text-[#EA2B2B] dark:bg-[#EA2B2B]/15 dark:text-[#FB5454] border-[#EA2B2B]/20',
+            'dot' => 'bg-[#EA2B2B]',
         ],
         'suspended', 'disabled', 'inactive' => [
-            'class' => 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400 border-slate-200 dark:border-slate-700',
-            'dot' => 'bg-slate-400',
+            'class' => 'bg-[#EFF2F7] text-[#64748B] dark:bg-[#313D4A] dark:text-[#AEB7C0] border-stroke dark:border-strokedark',
+            'dot' => 'bg-[#8A99AD]',
         ],
         default => [
-            'class' => 'bg-blue-50 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400 border-blue-200 dark:border-blue-800/60',
-            'dot' => 'bg-blue-500',
+            'class' => 'bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-400 border-brand-200 dark:border-brand-500/20',
+            'dot' => 'bg-brand-500',
         ],
     };
 @endphp
 
-<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border {{ $styles['class'] }}">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium border {{ $styles['class'] }}">
     <span class="w-1.5 h-1.5 rounded-full {{ $styles['dot'] }}"></span>
     <span>{{ $text }}</span>
 </span>

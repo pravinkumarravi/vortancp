@@ -6,7 +6,7 @@
 ])
 
 @php
-    $baseClasses = 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer';
+    $baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-boxdark disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer';
 
     $sizeClasses = match($size) {
         'sm' => 'px-3 py-1.5 text-xs gap-1.5',
@@ -15,10 +15,10 @@
     };
 
     $variantClasses = match($variant) {
-        'secondary' => 'bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-700 dark:text-gray-200 focus:ring-slate-500',
-        'danger' => 'bg-rose-600 hover:bg-rose-500 text-white focus:ring-rose-500 shadow-md shadow-rose-600/20',
-        'outline' => 'border border-gray-300 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-200 focus:ring-slate-500',
-        default => 'bg-emerald-600 hover:bg-emerald-500 text-white focus:ring-emerald-500 shadow-md shadow-emerald-600/20',
+        'secondary' => 'bg-gray-100 hover:bg-gray-200 dark:bg-[#313D4A] dark:hover:bg-opacity-90 text-gray-800 dark:text-white focus:ring-gray-400',
+        'danger' => 'bg-[#DC3545] hover:bg-opacity-90 text-white focus:ring-[#DC3545] shadow-sm',
+        'outline' => 'border border-stroke dark:border-strokedark hover:bg-gray-100 dark:hover:bg-[#313D4A] text-gray-800 dark:text-white focus:ring-brand-500',
+        default => 'bg-brand-500 hover:bg-brand-600 text-white focus:ring-brand-500 shadow-sm shadow-brand-500/20',
     };
 @endphp
 

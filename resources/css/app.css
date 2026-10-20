@@ -8,18 +8,50 @@
 
 @theme {
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --color-brand-50: #f0fdf4;
-    --color-brand-100: #dcfce7;
-    --color-brand-500: #10b981;
-    --color-brand-600: #059669;
-    --color-brand-700: #047857;
-    --color-brand-900: #064e3b;
-    --color-dark-bg: #0f172a;
-    --color-dark-card: #1e293b;
-    --color-dark-border: #334155;
+
+    /* TailAdmin Core Brand Palette (#465FFF) */
+    --color-brand-25: #f2f7ff;
+    --color-brand-50: #ecf3ff;
+    --color-brand-100: #dde9ff;
+    --color-brand-200: #c2d6ff;
+    --color-brand-300: #9cb9ff;
+    --color-brand-400: #7592ff;
+    --color-brand-500: #465fff;
+    --color-brand-600: #3641f5;
+    --color-brand-700: #2a31d8;
+    --color-brand-800: #252dae;
+    --color-brand-900: #262e89;
+    --color-brand-950: #161950;
+
+    /* TailAdmin Signature Dark Surfaces & Neutrals */
+    --color-boxdark: #24303f;
+    --color-boxdark-2: #1a222c;
+    --color-bodydark: #aeb7c0;
+    --color-bodydark1: #dee4ee;
+    --color-bodydark2: #8a99ad;
+    --color-strokedark: #2e3a47;
+    --color-stroke: #e2e8f0;
+    --color-whiten: #f1f5f9;
+    --color-whiter: #f5f7fd;
+
+    /* TailAdmin Meta / Status Badges */
+    --color-meta-1: #dc3545;
+    --color-meta-2: #eff2f7;
+    --color-meta-3: #10b981;
+    --color-meta-4: #313d4a;
+    --color-meta-5: #259ae6;
+    --color-meta-6: #ffba00;
+    --color-meta-7: #ff6766;
+    --color-meta-8: #f0950c;
+    --color-meta-9: #e5e7eb;
+
+    /* Compatibility Mappings */
+    --color-dark-bg: #1a222c;
+    --color-dark-card: #24303f;
+    --color-dark-border: #2e3a47;
 }
 
-/* Custom scrollbars for file manager and tables */
+/* TailAdmin Custom Scrollbars */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -30,10 +62,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #94a3b8;
+    background: #c1c9d2;
     border-radius: 9999px;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-    background: #475569;
+    background: #344458;
 }

@@ -5,15 +5,15 @@
     'footer' => null,
 ])
 
-<div {{ $attributes->merge(['class' => 'bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden']) }}>
+<div {{ $attributes->merge(['class' => 'rounded-xl border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark overflow-hidden']) }}>
     @if($title || $actions)
-        <div class="px-6 py-4 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between">
+        <div class="px-6 py-4 border-b border-stroke dark:border-strokedark flex items-center justify-between">
             <div>
                 @if($title)
-                    <h3 class="text-base font-semibold text-gray-900 dark:text-white leading-tight">{{ $title }}</h3>
+                    <h3 class="text-base font-semibold text-black dark:text-white leading-tight">{{ $title }}</h3>
                 @endif
                 @if($subtitle)
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{{ $subtitle }}</p>
+                    <p class="text-xs text-body dark:text-bodydark mt-0.5">{{ $subtitle }}</p>
                 @endif
             </div>
             @if($actions)
@@ -29,7 +29,7 @@
     </div>
 
     @if($footer)
-        <div class="px-6 py-3 bg-gray-50 dark:bg-slate-950/40 border-t border-gray-100 dark:border-slate-800">
+        <div class="px-6 py-3 bg-[#F7F9FC] dark:bg-[#1A222C]/60 border-t border-stroke dark:border-strokedark">
             {{ $footer }}
         </div>
     @endif
