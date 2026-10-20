@@ -17,7 +17,7 @@
 - **Root-Isolated Daemon (`vortan-agent`)**:
   - The web application executes as unprivileged user `vortan`.
   - Privileged Linux host operations (Nginx, PHP-FPM, BIND9, Postfix, UFW, system users, quotas) are orchestrated strictly via **allowlisted JSON-RPC 2.0 over Unix Domain Socket / mTLS** with cryptographic HMAC-SHA256 authentication.
-- **100% Green Test Suite**: 149 passing tests with 562 assertions covering unit compiler logic and end-to-end Livewire interactivity.
+- **100% Green Test Suite**: 182 passing tests with 691 assertions covering unit compiler logic and end-to-end Livewire interactivity.
 
 ---
 
@@ -34,7 +34,7 @@
 | **HostingPlans** | Packages, quota caps (disk, bandwidth, domains, databases), `EntitlementService` assertions. |
 | **Domains** | Primary/addon/subdomains, document root isolation, Nginx virtual host compiler, redirects. |
 | **Dns** | RFC 1035 compliant BIND zone compiler, automated SOA serial increments, standard hosting records. |
-| **Ssl** | OpenSSL keypair manager, CSR generator, Let's Encrypt ACME 1-click issuance, keypair validator. |
+| **Ssl & AutoSSL** | OpenSSL keypairs, CSR generator, Let's Encrypt ACME 1-click issuance, and automated cluster-wide **AutoSSL Fleet Engine** with proactive 30-day renewal scanner and automated Nginx certificate binding. |
 | **FileManager** | In-jail filesystem navigator, path traversal protection, code editor, file upload/download. |
 | **Databases** | MariaDB/MySQL database & user provisioning, quota caps, privilege assignments. |
 | **Email** | Postfix/Dovecot mailboxes, quotas, forwarders, automated 2048-bit DKIM keypair generation. |
@@ -116,7 +116,7 @@ Access the application at `http://127.0.0.1:8000`.
 The test suite validates both Unit compilation logic and Livewire Feature interactivity:
 
 ```bash
-# Run all 175 tests (671 assertions)
+# Run all 182 tests (691 assertions)
 php artisan test
 
 # Run a specific domain module's tests

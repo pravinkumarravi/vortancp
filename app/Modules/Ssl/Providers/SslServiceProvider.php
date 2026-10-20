@@ -18,6 +18,7 @@ class SslServiceProvider extends ServiceProvider
     {
         $this->app->singleton(SslValidatorService::class);
         $this->app->singleton(SslCertificateService::class);
+        $this->app->singleton(\App\Modules\Ssl\Services\AutoSslFleetService::class);
 
         $registry = $this->app->make(ModuleRegistry::class);
         $registry->registerModule(SslModule::class);
@@ -27,6 +28,12 @@ class SslServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'ssl');
 
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \App\Modules\Ssl\Commands\AutoSslRunCommand::class,
+            ]);
+        }
+
         $navigation = $this->app->make(NavigationRegistry::class);
 
         // Admin Navigation: SSL Certificates
@@ -35,7 +42,18 @@ class SslServiceProvider extends ServiceProvider
             sectionId: 'hosting_management',
             item: NavigationItem::make('ssl_management', 'SSL/TLS Certificates', 'admin.ssl.index', 'lock-closed', 5)
                 ->permission('ssl.manage')
-                ->activeWhen('admin.ssl*'),
+                ->activeWhen('admin.ssl.index'),
+            sectionTitle: 'Hosting Management',
+            sectionOrder: 30
+        );
+
+        // Admin Navigation: AutoSSL Fleet Manager
+        $navigation->registerItem(
+            panel: 'admin',
+            sectionId: 'hosting_management',
+            item: NavigationItem::make('autossl_management', 'AutoSSL Fleet', 'admin.ssl.autossl', 'shield-check', 6)
+                ->permission('ssl.manage')
+                ->activeWhen('admin.ssl.autossl*'),
             sectionTitle: 'Hosting Management',
             sectionOrder: 30
         );

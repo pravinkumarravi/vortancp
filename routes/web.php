@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/domains', \App\Modules\Domains\Livewire\DomainIndex::class)->name('domains.index');
             Route::get('/dns', \App\Modules\Dns\Livewire\DnsZoneEditor::class)->name('dns.index');
             Route::get('/ssl', \App\Modules\Ssl\Livewire\SslCertificateManager::class)->name('ssl.index');
+            Route::get('/ssl/autossl', \App\Modules\Ssl\Livewire\AutoSslManager::class)->name('ssl.autossl');
             Route::get('/files', \App\Modules\FileManager\Livewire\FileManagerIndex::class)->name('files.index');
             Route::get('/databases', \App\Modules\Databases\Livewire\DatabaseIndex::class)->name('databases.index');
             Route::get('/email', \App\Modules\Email\Livewire\MailboxManager::class)->name('email.index');

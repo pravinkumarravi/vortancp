@@ -80,6 +80,18 @@ class Domain extends Model
         return $this->hasMany(\App\Modules\AppInstaller\Models\InstalledApp::class);
     }
 
+    public function sslCertificates(): HasMany
+    {
+        return $this->hasMany(\App\Modules\Ssl\Models\SslCertificate::class);
+    }
+
+    public function activeSslCertificate(): HasOne
+    {
+        return $this->hasOne(\App\Modules\Ssl\Models\SslCertificate::class)
+            ->where('status', \App\Modules\Ssl\Models\SslCertificate::STATUS_ACTIVE)
+            ->latestOfMany();
+    }
+
     public function isPrimary(): bool
     {
         return $this->type === self::TYPE_PRIMARY;
