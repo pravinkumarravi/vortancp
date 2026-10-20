@@ -49,6 +49,7 @@
 | **AppInstaller** | 1-click installer for Laravel, phpMyAdmin, Roundcube Webmail, Nextcloud Hub, Drupal, and Joomla. |
 | **Metrics** | Live CPU, RAM, disk, load averages, account quota utilization gauges, and warning threshold alerts. |
 | **Agent** | Privileged host orchestration daemon, allowlisted JSON-RPC 2.0 protocol, HMAC verification. |
+| **Billing & WHMCS** | RESTful external billing API integration for WHMCS, Blesta, and HostBill with API key management. |
 
 ---
 
@@ -113,14 +114,34 @@ Access the application at `http://127.0.0.1:8000`.
 The test suite validates both Unit compilation logic and Livewire Feature interactivity:
 
 ```bash
-# Run all 149 tests
+# Run all 160 tests (627 assertions)
 php artisan test
 
 # Run a specific domain module's tests
+php artisan test --filter=BillingApi
 php artisan test --filter=Agent
 php artisan test --filter=WordPress
 php artisan test --filter=Databases
 ```
+
+---
+
+## 💳 WHMCS & Billing Integration API
+
+VortanCP provides a native REST API for WHMCS, Blesta, and HostBill automation:
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/v1/billing/accounts/create` | Provisions account, primary domain, vhost, DNS zone & mailbox |
+| `POST` | `/api/v1/billing/accounts/{user}/suspend` | Suspends account with reason |
+| `POST` | `/api/v1/billing/accounts/{user}/unsuspend` | Restores account to active status |
+| `POST` | `/api/v1/billing/accounts/{user}/terminate` | Permanently deletes account and associated assets |
+| `POST` | `/api/v1/billing/accounts/{user}/change-package` | Upgrades/downgrades hosting plan quotas |
+| `GET` | `/api/v1/billing/accounts/{user}/status` | Fetches live disk/bandwidth usage and status |
+| `GET` | `/api/v1/billing/accounts` | Paginated listing of accounts |
+| `GET` | `/api/v1/billing/plans` | Lists available plans and resource allocations |
+
+Authenticate using the `X-API-Key: {token}` header or `Authorization: Bearer {token}`. API keys can be generated and managed directly in the Admin Panel under **System Settings → API & Billing**.
 
 ---
 
@@ -144,3 +165,4 @@ The script automatically sets up:
 ## 📄 License
 
 VortanCP is open-sourced software licensed under the [MIT License](LICENSE).
+
