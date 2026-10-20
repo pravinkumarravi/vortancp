@@ -1,0 +1,25 @@
+[Unit]
+Description=VortanCP Privileged Host Orchestration Agent
+After=network.target local-fs.target
+Documentation=https://vortancp.com/docs
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/var/vortan/panel
+ExecStart=/usr/bin/php /var/vortan/panel/artisan vortan:agent --socket=/run/vortan/agent.sock
+Restart=always
+RestartSec=5s
+KillMode=mixed
+TimeoutStopSec=30
+StandardOutput=journal
+StandardError=journal
+AmbientCapabilities=CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_CHOWN CAP_DAC_OVERRIDE
+
+# Directory isolation & permissions
+RuntimeDirectory=vortan
+RuntimeDirectoryMode=0755
+
+[Install]
+WantedBy=multi-user.target

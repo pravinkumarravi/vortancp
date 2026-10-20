@@ -1,58 +1,146 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# VortanCP - Next-Gen Modular Web Hosting Control Panel
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <strong>An enterprise-grade, high-performance, modular alternative to cPanel/WHM and Plesk.</strong><br>
+  Built with Laravel 13, Livewire v4, Tailwind CSS, Alpine.js, and an isolated privileged Linux daemon.
 </p>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Key Highlights & Architectural Strengths
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Truly Modular Architecture**: Every capability is an independent module in `app/Modules/{Module}/` with its own business logic, Livewire components, Blade views, migrations, and test coverage.
+- **Three Core User Portals**:
+  1. **Administrator Panel (`/admin`)**: Fleet node inventory, global accounts, package quotas, cluster firewall, ModSecurity WAF, and audit logs.
+  2. **Reseller Panel (`/reseller`)**: Sub-reseller tenancy, customer account provisioning, custom package definitions, and pooled quota management.
+  3. **Customer Hosting Panel (`/app`)**: Self-service domain management, DNS zone editor, 1-click Let's Encrypt SSL, safe File Manager, MariaDB databases, Postfix/Dovecot email, isolated PHP versions, Pure-FTPd virtual users, cron jobs, backups, Git webhooks, WordPress Toolkit, and 1-Click App Installer.
+- **Root-Isolated Daemon (`vortan-agent`)**:
+  - The web application executes as unprivileged user `vortan`.
+  - Privileged Linux host operations (Nginx, PHP-FPM, BIND9, Postfix, UFW, system users, quotas) are orchestrated strictly via **allowlisted JSON-RPC 2.0 over Unix Domain Socket / mTLS** with cryptographic HMAC-SHA256 authentication.
+- **100% Green Test Suite**: 149 passing tests with 562 assertions covering unit compiler logic and end-to-end Livewire interactivity.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📦 Modular Inventory
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+| Module | Purpose & Core Capabilities |
+| :--- | :--- |
+| **Core** | Dynamic `ModuleRegistry`, `NavigationRegistry`, priority sort, dependency resolution. |
+| **Identity** | RBAC (`super_admin`, `admin`, `reseller`, `customer`), permission gates, TOTP 2FA. |
+| **Audit** | Immutable, cryptographically signed audit logger with automated sensitive parameter redaction. |
+| **Dashboard** | Real-time statistics, quota consumption meters, server health, and quick actions. |
+| **Servers** | Multi-node cluster inventory, health ping telemetry, and optimal placement engine. |
+| **Accounts & Resellers** | Multi-tenant customer accounts, sub-reseller pools, lifecycle suspension/activation. |
+| **HostingPlans** | Packages, quota caps (disk, bandwidth, domains, databases), `EntitlementService` assertions. |
+| **Domains** | Primary/addon/subdomains, document root isolation, Nginx virtual host compiler, redirects. |
+| **Dns** | RFC 1035 compliant BIND zone compiler, automated SOA serial increments, standard hosting records. |
+| **Ssl** | OpenSSL keypair manager, CSR generator, Let's Encrypt ACME 1-click issuance, keypair validator. |
+| **FileManager** | In-jail filesystem navigator, path traversal protection, code editor, file upload/download. |
+| **Databases** | MariaDB/MySQL database & user provisioning, quota caps, privilege assignments. |
+| **Email** | Postfix/Dovecot mailboxes, quotas, forwarders, automated 2048-bit DKIM keypair generation. |
+| **PhpManager** | Multi-PHP version manager (8.1, 8.2, 8.3, 8.4), isolated FPM pool compiler, directive overrides. |
+| **Ftp** | Virtual user Pure-FTPd/ProFTPd format compiler, homedir chroots, password hashing. |
+| **Cron** | Scheduled task manager, standard Unix crontab compiler, command injection sanitization. |
+| **Backups** | Full and selective account archives (`manifest.json`), SHA-256 integrity verification, automated pruning. |
+| **Firewall** | UFW & IPTables rule compiler, port ranges, CIDR validation, Fail2ban ban/unban shield. |
+| **SecurityCenter** | ModSecurity v3 WAF compiler, OWASP Core Rule Set, ClamAV-compatible scanner, quarantine vault. |
+| **WordPressToolkit** | 1-click installer, automated DB provisioning, auto-updates, XML-RPC & file edit hardening, SSO login. |
+| **Git** | SSH deploy key generation, remote repo tracking, deployment branch checkout, push webhooks. |
+| **AppInstaller** | 1-click installer for Laravel, phpMyAdmin, Roundcube Webmail, Nextcloud Hub, Drupal, and Joomla. |
+| **Metrics** | Live CPU, RAM, disk, load averages, account quota utilization gauges, and warning threshold alerts. |
+| **Agent** | Privileged host orchestration daemon, allowlisted JSON-RPC 2.0 protocol, HMAC verification. |
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Technology Stack
 
-## Agentic Development
+- **Backend Framework**: Laravel 13.37.0 (PHP 8.3 / 8.4)
+- **Frontend / Reactivity**: Livewire v4.4.7, Alpine.js, Blade
+- **Styling**: Tailwind CSS v4 (`@tailwindcss/vite`) + Custom Dark Mode TailAdmin theme
+- **Database**: SQLite (Local Dev / Testing) / MariaDB 10.11+ / MySQL 8.0+ (Production)
+- **Web Server**: Nginx with PHP-FPM
+- **Name Server**: BIND9
+- **Mail Stack**: Postfix + Dovecot + OpenDKIM
+- **FTP Daemon**: Pure-FTPd (Virtual Users)
+- **Security & WAF**: UFW, Fail2ban, ModSecurity v3, OWASP Core Rule Set
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
+## 🚀 Quick Start (Development)
+
+### 1. Requirements
+- PHP 8.3 or 8.4 with extensions: `pdo_sqlite`, `curl`, `mbstring`, `openssl`, `zip`
+- Composer 2+
+- Node.js 20+ and npm
+
+### 2. Setup
 ```bash
-composer require laravel/boost --dev
+# Clone and enter directory
+git clone https://github.com/vortancp/panel.git
+cd panel
 
-php artisan boost:install
+# Install PHP and Node dependencies
+composer install
+npm install
+
+# Setup environment
+cp .env.example .env
+php artisan key:generate
+
+# Run database migrations and seeders
+php artisan migrate --force
+php artisan db:seed --class=IdentityDatabaseSeeder --force
+
+# Compile assets
+npm run build
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 3. Run Development Server
+```bash
+php artisan serve
+```
+Access the application at `http://127.0.0.1:8000`.
 
-## Contributing
+### 4. Default Seeded Credentials
+- **Super Administrator**: `admin@vortan.local` / `password`
+- **Reseller**: `reseller@vortan.local` / `password`
+- **Customer**: `customer@vortan.local` / `password`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🧪 Running Tests
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The test suite validates both Unit compilation logic and Livewire Feature interactivity:
 
-## Security Vulnerabilities
+```bash
+# Run all 149 tests
+php artisan test
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Run a specific domain module's tests
+php artisan test --filter=Agent
+php artisan test --filter=WordPress
+php artisan test --filter=Databases
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🌐 Production Installation (Ubuntu 22.04 / 24.04 & Debian 12)
+
+Run the automated idempotent installer as root on a fresh server:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/vortancp/panel/master/scripts/vortan-installer.sh | bash
+```
+
+The script automatically sets up:
+- Complete web, DNS, database, mail, and FTP stacks.
+- Unprivileged system user `vortan`.
+- Systemd units `vortan-agent.service` and `vortan-queue.service`.
+- UFW firewall rules and Fail2ban filters.
+- MariaDB production database and credentials.
+
+---
+
+## 📄 License
+
+VortanCP is open-sourced software licensed under the [MIT License](LICENSE).

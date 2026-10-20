@@ -1,0 +1,19 @@
+/var/vortan/panel/storage/logs/*.log {
+    daily
+    missingok
+    rotate 14
+    compress
+    delaycompress
+    notifempty
+    create 0640 vortan vortan
+}
+
+/var/log/vortan/*.log {
+    daily
+    missingok
+    rotate 30
+    compress
+    delaycompress
+    notifempty
+    create 0640 root root
+}

@@ -1,0 +1,20 @@
+[Unit]
+Description=VortanCP Asynchronous Queue Worker
+After=network.target mysql.service redis.service
+Documentation=https://vortancp.com/docs
+
+[Service]
+Type=simple
+User=vortan
+Group=vortan
+WorkingDirectory=/var/vortan/panel
+ExecStart=/usr/bin/php /var/vortan/panel/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+Restart=always
+RestartSec=3s
+KillMode=mixed
+TimeoutStopSec=60
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
