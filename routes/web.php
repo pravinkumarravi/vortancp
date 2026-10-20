@@ -76,6 +76,10 @@ Route::middleware('auth')->group(function () {
             Route::get('/services', \App\Modules\ServiceManager\Livewire\ServiceManagerIndex::class)->name('services.index');
             Route::get('/logs', \App\Modules\Logs\Livewire\AdminLogViewer::class)->name('logs.index');
             Route::get('/terminal', \App\Modules\Terminal\Livewire\WebTerminal::class)->name('terminal.index');
+            Route::get('/migration', \App\Modules\Migration\Livewire\MigrationManager::class)->name('migration.index');
+            Route::get('/dns-cluster', \App\Modules\DnsCluster\Livewire\DnsClusterManager::class)->name('dns_cluster.index');
+            Route::get('/analytics', \App\Modules\Analytics\Livewire\DomainAnalytics::class)->name('analytics.index');
+            Route::get('/email-security', \App\Modules\EmailSecurity\Livewire\EmailSecurityManager::class)->name('email_security.index');
 
             // Placeholder routes for navigation links
             Route::get('/users', function () {
@@ -121,6 +125,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/metrics', \App\Modules\Metrics\Livewire\MetricsIndex::class)->name('metrics.index');
             Route::get('/logs', \App\Modules\Logs\Livewire\CustomerLogViewer::class)->name('logs.index');
             Route::get('/terminal', \App\Modules\Terminal\Livewire\WebTerminal::class)->name('terminal.index');
+            Route::get('/analytics', \App\Modules\Analytics\Livewire\DomainAnalytics::class)->name('analytics.index');
+            Route::get('/email-security', \App\Modules\EmailSecurity\Livewire\EmailSecurityManager::class)->name('email_security.index');
         });
 
     // User Profile & Settings

@@ -92,6 +92,11 @@ class Domain extends Model
             ->latestOfMany();
     }
 
+    public function trafficMetrics(): HasMany
+    {
+        return $this->hasMany(\App\Modules\Analytics\Models\DomainTrafficMetric::class);
+    }
+
     public function isPrimary(): bool
     {
         return $this->type === self::TYPE_PRIMARY;

@@ -33,4 +33,8 @@ return [
     \App\Modules\ServiceManager\Providers\ServiceManagerServiceProvider::class,
     \App\Modules\Logs\Providers\LogsServiceProvider::class,
     \App\Modules\Terminal\Providers\TerminalServiceProvider::class,
+    \App\Modules\Migration\Providers\MigrationServiceProvider::class,
+    \App\Modules\DnsCluster\Providers\DnsClusterServiceProvider::class,
+    \App\Modules\Analytics\Providers\AnalyticsServiceProvider::class,
+    \App\Modules\EmailSecurity\Providers\EmailSecurityServiceProvider::class,
 ];

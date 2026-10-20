@@ -17,7 +17,7 @@
 - **Root-Isolated Daemon (`vortan-agent`)**:
   - The web application executes as unprivileged user `vortan`.
   - Privileged Linux host operations (Nginx, PHP-FPM, BIND9, Postfix, UFW, system users, quotas) are orchestrated strictly via **allowlisted JSON-RPC 2.0 over Unix Domain Socket / mTLS** with cryptographic HMAC-SHA256 authentication.
-- **100% Green Test Suite**: 191 passing tests with 715 assertions covering unit compiler logic and end-to-end Livewire interactivity.
+- **100% Green Test Suite**: 212 passing tests with 797 assertions covering unit compiler logic and end-to-end Livewire interactivity.
 
 ---
 
@@ -53,6 +53,10 @@
 | **Service Manager** | Core systemd daemon monitoring, 1-click service control (restart/reload/stop), and crash recovery watchdog. |
 | **Log Inspector** | Real-time server log inspection (Nginx, PHP-FPM, MariaDB, Mail, Agent, Fail2ban) & customer domain logs. |
 | **Web Terminal** | In-browser interactive shell console with jailed customer homedir chroot, privilege barriers, destructive command blocking, and security audit trail. |
+| **Migration** | Full cPanel backup archive parser (`cpmove-*.tar.gz`), pre-flight validator, and automated multi-asset restoration engine (Customers, Vhosts, Databases, Mailboxes, Crons, DNS). |
+| **DnsCluster** | Multi-node Master-Slave DNS cluster engine, automated zone broadcast synchronization, health/latency monitoring, and retry queue. |
+| **Analytics** | Nginx combined access log parser, status distribution breakdown (2xx, 3xx, 4xx, 5xx), traffic bandwidth aggregation, top URLs, and referrers. |
+| **EmailSecurity** | Anti-Spam protection shield (Rspamd/SpamAssassin integration), customizable score thresholds, automated greylisting, trusted allowlists, and sender blocklists. |
 
 ---
 
