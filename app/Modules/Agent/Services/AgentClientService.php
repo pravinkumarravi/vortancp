@@ -111,7 +111,7 @@ class AgentClientService
             return true;
         }
 
-        if ($server && ! $server->is_local) {
+        if ($server && ! $server->isLocal()) {
             return false;
         }
 
@@ -123,7 +123,7 @@ class AgentClientService
      */
     protected function dispatchOverSocket(array $payload, ?Server $server = null): array
     {
-        $address = ($server && ! $server->is_local)
+        $address = ($server && ! $server->isLocal())
             ? "tcp://{$server->ip_address}:8443"
             : "unix://{$this->socketPath}";
 

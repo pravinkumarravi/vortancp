@@ -71,6 +71,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/git', \App\Modules\Git\Livewire\GitIndex::class)->name('git.index');
             Route::get('/apps', \App\Modules\AppInstaller\Livewire\AppInstallerIndex::class)->name('apps.index');
             Route::get('/metrics', \App\Modules\Metrics\Livewire\MetricsIndex::class)->name('metrics.index');
+            Route::get('/billing', \App\Modules\Billing\Livewire\ApiKeyManager::class)->name('billing.index');
 
             // Placeholder routes for navigation links
             Route::get('/users', function () {

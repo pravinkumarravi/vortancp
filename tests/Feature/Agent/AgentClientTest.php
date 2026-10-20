@@ -30,7 +30,7 @@ class AgentClientTest extends TestCase
             'hostname' => 'node01.vortancp.local',
             'ip_address' => '10.0.0.60',
             'status' => Server::STATUS_ACTIVE,
-            'is_local' => true,
+            'connection_type' => Server::CONNECTION_LOCAL,
             'auth_token' => 'secret_agent_key_node_01',
         ]);
     }

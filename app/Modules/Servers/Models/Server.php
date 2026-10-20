@@ -71,6 +71,11 @@ class Server extends Model
         return $this->status === self::STATUS_ACTIVE;
     }
 
+    public function isLocal(): bool
+    {
+        return $this->connection_type === self::CONNECTION_LOCAL;
+    }
+
     public function isHealthy(): bool
     {
         if (!$this->isActive()) {
