@@ -77,8 +77,8 @@
 ### 2. Setup
 ```bash
 # Clone and enter directory
-git clone https://github.com/vortancp/panel.git
-cd panel
+git clone https://github.com/pravinkumarravi/vortancp.git
+cd vortancp
 
 # Install PHP and Node dependencies
 composer install
@@ -150,7 +150,7 @@ Authenticate using the `X-API-Key: {token}` header or `Authorization: Bearer {to
 Run the automated idempotent installer as root on a fresh server:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/vortancp/panel/master/scripts/vortan-installer.sh | bash
+curl -sSL https://raw.githubusercontent.com/pravinkumarravi/vortancp/main/scripts/vortan-installer.sh | bash
 ```
 
 The script automatically sets up:
